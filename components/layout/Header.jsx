@@ -6,26 +6,29 @@ import Link from 'next/link';
 import styled from '@emotion/styled';
 import {css}  from '@emotion/react'
 
+const HeaderContainer = styled.div`
+max-width: 1200px;
+width:95%;
+margin: 0 auto;
+@media (min-width: 768px){
+    display: flex;
+    justify-content: space-between;
+}
+`
+
+const Logo = styled.p`
+color: var(--naranja);
+font-size: 3rem;
+line-height: 0;
+font-weight: 700;
+font-family: 'Roboto', serif;
+margin-right: 2rem;
+`
+
 export default function Header() {
 
-    const HeaderContainer = styled.div`
-        max-width: 1200px;
-        width:95%;
-        margin: 0 auto;
-        @media (min-width: 768px){
-            display: flex;
-            justify-content: space-between;
-        }
-    `
+    const user = false;
 
-    const Logo = styled.p`
-        color: var(--naranja);
-        font-size: 2.5rem;
-        line-height: 0;
-        font-weight: 700;
-        font-family: 'Roboto', serif;
-        margin-right: 2rem;
-    `
     return (
         <header
             css={
@@ -36,7 +39,14 @@ export default function Header() {
             }
         >
             <HeaderContainer>
-                <div>
+                <div
+                    css={
+                        css`
+                        display:flex;
+                        align-items: center;
+                        `
+                    }
+                >
                     <Link href='/'>
                         <Logo>B&S</Logo>
                     </Link>
@@ -51,7 +61,7 @@ export default function Header() {
                     `}
                 >
 
-                   <p
+                {user ? <><p
                     css={css`
                         margin-right: 2rem ;
                     `}
@@ -60,8 +70,12 @@ export default function Header() {
                    type='button'
                    bgColor='true'
                    >Log Out</Button>
-                   <Link href="/"><Button  bgColor='true'>Login</Button></Link>
-                   <Link href="/"><Button>Create Account</Button></Link>
+                   </>
+                   : 
+                   <>
+                   <Link href="/login"><Button  bgColor='true'>Login</Button></Link>
+                   <Link href="/create-account"><Button>Create Account</Button></Link>
+                   </> }
                 </div>
             </HeaderContainer>
         </header>
