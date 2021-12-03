@@ -44,3 +44,14 @@ export const InputSubmit = styled.input`
       opacity: 80%;
   }
 `
+
+export const Error = styled.p`
+    background-color: #ff0000c1;
+    padding: 0.5rem;
+    font-family: 'Nurito';
+    font-weight: 700;
+    color: #fff;
+    text-align:center;
+    text-transform: uppercase;
+    margin: 2rem 0;
+`
