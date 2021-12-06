@@ -5,6 +5,9 @@ import {Form, Field, InputSubmit, Error} from '../components/ui/form'
 // validation
 import useValidation from '../hooks/useValidation';
 import CreateAccountValidation from '../validation/validationCreateAccount';
+//firebase
+import firebase from '../firebase/firebase'; //we import the index.jsç
+require('firebase/auth')
 
 
 export default function CreateAccount() {
@@ -25,8 +28,12 @@ export default function CreateAccount() {
 
   const {name, email, password } = values;
 
-  function createAccount (){
-      console.log('creating account...')
+  async function createAccount (){
+      try {
+        await firebase.register(name, email,password);
+      } catch (error) {
+        console.error('There has been an error', error);
+      }
   }
 
   
